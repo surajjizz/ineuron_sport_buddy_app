@@ -22,6 +22,10 @@ class RootNavigator {
     goBack() {
         this.navigationRef.current?.goBack();
     }
+
+    toggleDrawer(){
+        this.navigationRef.current?.toggleDrawer();
+    }
 }
 
 export default new RootNavigator();

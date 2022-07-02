@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { HOME } from './Routes';
-import Home from '../screens/home/Home';
+import BottomTabNavigator from './BottomTabNavigator';
+import { Platform } from 'react-native';
+import DrawerNavigator from './DrawerNavigator';
 
 export type RootStackParams = {
     Home: undefined
@@ -19,7 +21,7 @@ const StackNavigator = () => {
 
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
             }}>
-            <Stack.Screen name={HOME} component={Home} />
+            <Stack.Screen name={HOME} component={Platform.OS === 'web' ? DrawerNavigator : BottomTabNavigator} />
         </Stack.Navigator>
     );
 };

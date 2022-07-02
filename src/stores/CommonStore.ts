@@ -17,7 +17,6 @@ export default class CommonStore {
     }
 
     @action setLoaderStatus = (status: boolean) => {
-        console.log("status",status)
         this.isLoading = status
     }
 }

@@ -1,36 +1,43 @@
 import * as React from 'react';
-import { Box, Center, FormControl, Heading, Input, Button, Link, VStack, HStack } from 'native-base';
+import { Box, Center, FormControl, Heading, Input, Button, VStack, HStack, Link } from 'native-base';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthStackParams } from '../../navigation/AuthNavigator';
-import { REGISTER } from '../../navigation/Routes';
 
 interface IProps {
-    navigation: StackNavigationProp<AuthStackParams, 'Login'>
+    navigation: StackNavigationProp<AuthStackParams, 'Register'>
 }
 
-const Login: React.FC<IProps> = (props) => {
+const Register: React.FC<IProps> = (props) => {
 
-    const navigateToRegister = () => {
-        props.navigation.navigate(REGISTER);
+    const backToLogin = () => {
+        props.navigation.goBack();
     }
 
     return <Center w="100%" bg={'primary.500'} flex={1}>
         <Box safeArea p="4" py="8" w="90%" maxW="290" bg={'white'} borderRadius='lg'>
             <Box alignItems='center'>
-                <Heading size="md" fontWeight="600" color="coolGray.800"
+                <Heading size='md' fontWeight="600" color="coolGray.800"
                     _dark={{ color: "warmGray.50" }}>
                     Sports Buddy
                 </Heading>
                 <Heading mt="1" _dark={{
                     color: "warmGray.200"
                 }} color="coolGray.600" fontWeight="medium" size='sm'>
-                    Login
+                    Registration
                 </Heading>
             </Box>
 
             <VStack space={3} mt="5">
                 <FormControl>
+                    <FormControl.Label>Full Name</FormControl.Label>
+                    <Input />
+                </FormControl>
+                <FormControl>
                     <FormControl.Label>Email</FormControl.Label>
+                    <Input />
+                </FormControl>
+                <FormControl>
+                    <FormControl.Label>Phone</FormControl.Label>
                     <Input />
                 </FormControl>
                 <FormControl>
@@ -38,13 +45,13 @@ const Login: React.FC<IProps> = (props) => {
                     <Input type="password" />
                 </FormControl>
                 <Button mt="2" colorScheme="indigo">
-                    Sign in
+                    Sign up
                 </Button>
 
                 <HStack mt="1" justifyContent="center">
                     <Link _text={{ color: "indigo.500", fontWeight: "medium", fontSize: "sm" }}
-                        onPress={navigateToRegister}>
-                        Create new account
+                        onPress={backToLogin}>
+                        Back
                     </Link>
                 </HStack>
             </VStack>
@@ -52,4 +59,4 @@ const Login: React.FC<IProps> = (props) => {
     </Center>;
 };
 
-export default Login;
+export default Register;

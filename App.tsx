@@ -1,17 +1,13 @@
 import * as React from "react";
 import 'react-native-gesture-handler';
 import {
-  Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme,
-  VStack, Box, Button
-} from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
+  Text, HStack, Switch, useColorMode, NativeBaseProvider, extendTheme} from "native-base";
 import RootStore from "./src/stores/RootStore";
 import { observer } from "mobx-react";
-import CommonStore from "./src/stores/CommonStore";
-import { observable } from "mobx";
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavContainer from "./src/navigation";
 import { StatusBar } from "expo-status-bar";
+import RootNavigator from "./src/navigation/RootNavigator";
 
 // Define the config
 const config = {
