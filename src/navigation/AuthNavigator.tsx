@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { REGISTER, LOGIN } from './Routes';
+import { REGISTER, LOGIN, PROFILE } from './Routes';
 import Login from '../screens/login/Login';
 
 export type AuthStackParams = {

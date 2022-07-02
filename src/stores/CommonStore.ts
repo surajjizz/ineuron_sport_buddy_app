@@ -1,4 +1,5 @@
 import { observable, action, makeObservable } from "mobx";
+import { GestureResponderEvent } from "react-native";
 
 export default class CommonStore {
     @observable isLoading: boolean = false;
@@ -19,5 +20,9 @@ export default class CommonStore {
     @action setLoaderStatus = (status: boolean) => {
         console.log("status",status)
         this.isLoading = status
+    }
+
+    @action login = (data: GestureResponderEvent) => {
+        console.log(data)
     }
 }

@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Box, Center, FormControl, Heading, HStack, Input, Button, Link, Text, VStack } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { GestureResponderEvent, StyleSheet } from 'react-native';
+import CommonStore from './../../stores/CommonStore';
 
 interface IProps {
-
+  commonStore : CommonStore
 }
 
-const Login: React.FC<IProps> = () => {
+const Login: React.FC<IProps> = (props) => {
 
+    function signIn(e: GestureResponderEvent){
+      props.commonStore.login(e);
+    }
     return <Center w="100%" backgroundColor={'white'}>
         <Box safeArea p="2" py="8" w="90%" maxW="290" backgroundColor={'red'}>
             <Heading size="lg" fontWeight="600" color="coolGray.800" _dark={{
@@ -37,7 +41,7 @@ const Login: React.FC<IProps> = () => {
                         Forget Password?
                     </Link>
                 </FormControl>
-                <Button mt="2" colorScheme="indigo">
+                <Button mt="2" colorScheme="indigo" onPress={(e)=>signIn(e)}>
                     Sign in
                 </Button>
                 {/* <HStack mt="6" justifyContent="center">

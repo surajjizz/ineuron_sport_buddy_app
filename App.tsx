@@ -12,6 +12,7 @@ import { observable } from "mobx";
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavContainer from "./src/navigation";
 import { StatusBar } from "expo-status-bar";
+import Profile from "./src/screens/Profile/profile";
 
 // Define the config
 const config = {
@@ -41,6 +42,7 @@ const ToggleDarkMode = () => {
       }
     />
     <Text>Light</Text>
+    <Profile />
   </HStack>
 }
 

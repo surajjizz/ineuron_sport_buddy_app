@@ -13,7 +13,7 @@ const AppNavContainer = () => {
         if (user) {
             setIsAuthenticated(true);
         } else {
-            setIsAuthenticated(false);
+            setIsAuthenticated(true);
         }
     };
 
