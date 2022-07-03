@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Box, Center, FormControl, Heading, Input, Button, Link, VStack, HStack } from 'native-base';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthStackParams } from '../../navigation/AuthNavigator';
-import { REGISTER } from '../../navigation/Routes';
+import { HOME, REGISTER } from '../../navigation/Routes';
+import { observer } from 'mobx-react';
+import RootStore from '../../stores/RootStore';
 
 interface IProps {
     navigation: StackNavigationProp<AuthStackParams, 'Login'>
@@ -10,8 +12,25 @@ interface IProps {
 
 const Login: React.FC<IProps> = (props) => {
 
+    const { loginStore } = RootStore;
+
     const navigateToRegister = () => {
         props.navigation.navigate(REGISTER);
+    }
+
+    const login = async () => {
+        let response = await loginStore.login();
+        // if(response){
+        //     props.navigation.navigate(HOME);
+        // }
+    }
+
+    const setLoginData = (val: any, type: any) => {
+        if (type === 'email') {
+            loginStore.email = val;
+        } else {
+            loginStore.password = val;
+        }
     }
 
     return <Center w="100%" bg={'primary.500'} flex={1}>
@@ -31,13 +50,13 @@ const Login: React.FC<IProps> = (props) => {
             <VStack space={3} mt="5">
                 <FormControl>
                     <FormControl.Label>Email</FormControl.Label>
-                    <Input />
+                    <Input value={loginStore?.email} onChangeText={(val) => setLoginData(val, 'email')} />
                 </FormControl>
                 <FormControl>
                     <FormControl.Label>Password</FormControl.Label>
-                    <Input type="password" />
+                    <Input type="password" value={loginStore?.password} onChangeText={(val) => setLoginData(val, 'password')} />
                 </FormControl>
-                <Button mt="2" colorScheme="indigo">
+                <Button mt="2" colorScheme="indigo" onPress={login}>
                     Sign in
                 </Button>
 
@@ -52,4 +71,4 @@ const Login: React.FC<IProps> = (props) => {
     </Center>;
 };
 
-export default Login;
+export default observer(Login);

@@ -1,4 +1,5 @@
 import { Alert } from "react-native";
+import AppDefaults from "../defaults/AppDefaults";
 import RootStore from "../stores/RootStore";
 
 class HttpClient {
@@ -88,6 +89,7 @@ class HttpClient {
     async postResponse(url: string, body: object, method: string = 'POST') {
         let retResp: any = null
         const response: any = await this.post(url, body, method);
+        console.log("response",response)
         if (response == null) { return null; }
         try {
             if (response.ok) {
@@ -105,4 +107,6 @@ class HttpClient {
     }
 }
 
-export { HttpClient };
+const HttpWrapper=(url=AppDefaults.baseURL)=> new HttpClient(url);
+
+export default HttpWrapper;

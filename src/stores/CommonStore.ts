@@ -1,6 +1,9 @@
 import { observable, action, makeObservable } from "mobx";
 
 export default class CommonStore {
+    login(data: any) {
+        throw new Error('Method not implemented.');
+    }
     @observable isLoading: boolean = false;
 
     constructor() {
