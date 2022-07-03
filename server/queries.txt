@@ -1,0 +1,1 @@
+insert into games (game) values ('cricket'),('football'),('basket ball'),('volley ball'),('kabbadi'),('swimming'),('badminton'),('tennis'),('table tennis'),('running');
